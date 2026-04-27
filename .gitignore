@@ -1,0 +1,16 @@
+node_modules/
+npm-debug.log*
+
+dist/
+build/
+.cache/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+install/
+log/
+
+.DS_Store
+Thumbs.db

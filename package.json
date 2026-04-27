@@ -1,0 +1,20 @@
+{
+  "name": "occupancy-grid-astar-visualizer",
+  "version": "1.0.0",
+  "description": "Interactive 2D occupancy grid and A* path planner visualization with an optional ROS 2/Gazebo demo.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node scripts/dev-server.js",
+    "serve": "node scripts/dev-server.js",
+    "test": "node tests/planner.test.js"
+  },
+  "keywords": [
+    "astar",
+    "occupancy-grid",
+    "path-planning",
+    "robotics",
+    "gazebo",
+    "ros2"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2D Occupancy Grid + A* Planner</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Occupancy Grid</p>
+          <h1>A* Planner Visualization</h1>
+        </div>
+        <div id="statusPill" class="status-pill">Ready</div>
+      </header>
+
+      <main class="workspace">
+        <section class="canvas-panel" aria-label="Planner canvas">
+          <div class="canvas-wrap">
+            <canvas id="gridCanvas" aria-label="Occupancy grid map"></canvas>
+          </div>
+
+          <div class="timeline">
+            <button id="runBtn" class="primary" type="button" title="Animate the planner">Run</button>
+            <button id="stepBtn" type="button" title="Advance one planner step">Step</button>
+            <button id="solveBtn" type="button" title="Jump to the finished plan">Solve</button>
+            <button id="resetPlanBtn" type="button" title="Clear planner exploration">Reset</button>
+            <input id="frameSlider" type="range" min="0" max="0" value="0" aria-label="Planner frame" />
+            <output id="frameOutput">0 / 0</output>
+          </div>
+        </section>
+
+        <aside class="sidepanel" aria-label="Planner controls">
+          <section class="control-group">
+            <h2>Tools</h2>
+            <div class="segmented" role="group" aria-label="Map editing tools">
+              <button class="tool-btn active" type="button" data-mode="wall">Wall</button>
+              <button class="tool-btn" type="button" data-mode="erase">Erase</button>
+              <button class="tool-btn" type="button" data-mode="start">Start</button>
+              <button class="tool-btn" type="button" data-mode="goal">Goal</button>
+            </div>
+            <label class="field">
+              <span>Brush</span>
+              <select id="brushSelect">
+                <option value="1">1 cell</option>
+                <option value="2">2 cells</option>
+                <option value="3">3 cells</option>
+              </select>
+            </label>
+          </section>
+
+          <section class="control-group">
+            <h2>Planner</h2>
+            <label class="field">
+              <span>Heuristic</span>
+              <select id="heuristicSelect">
+                <option value="grid">Grid</option>
+                <option value="euclidean">Euclidean</option>
+                <option value="chebyshev">Chebyshev</option>
+              </select>
+            </label>
+            <label class="toggle">
+              <input id="diagonalToggle" type="checkbox" />
+              <span>Diagonal moves</span>
+            </label>
+            <label class="field">
+              <span>Speed</span>
+              <input id="speedRange" type="range" min="1" max="100" value="58" />
+            </label>
+          </section>
+
+          <section class="control-group">
+            <h2>Map</h2>
+            <div class="button-grid">
+              <button id="sampleBtn" type="button">Sample</button>
+              <button id="randomBtn" type="button">Random</button>
+              <button id="mazeBtn" type="button">Maze</button>
+              <button id="clearBtn" type="button">Clear</button>
+              <button id="exportBtn" type="button">Export</button>
+              <button id="importBtn" type="button">Import</button>
+            </div>
+            <input id="importInput" type="file" accept="application/json" hidden />
+          </section>
+
+          <section class="control-group">
+            <h2>Metrics</h2>
+            <dl class="stats">
+              <div>
+                <dt>Cells</dt>
+                <dd id="cellsStat">0</dd>
+              </div>
+              <div>
+                <dt>Occupied</dt>
+                <dd id="occupiedStat">0%</dd>
+              </div>
+              <div>
+                <dt>Explored</dt>
+                <dd id="exploredStat">0</dd>
+              </div>
+              <div>
+                <dt>Path Cost</dt>
+                <dd id="costStat">0</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="control-group">
+            <h2>Legend</h2>
+            <div class="legend">
+              <span><i class="swatch free"></i>Free</span>
+              <span><i class="swatch wall"></i>Wall</span>
+              <span><i class="swatch open"></i>Open</span>
+              <span><i class="swatch closed"></i>Closed</span>
+              <span><i class="swatch path"></i>Path</span>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="src/planner.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>
