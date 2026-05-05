@@ -84,21 +84,21 @@ Use RViz with the fixed frame set to `map` to view the occupancy grid and path.
 
 The browser app is dependency-free by design. The planner core lives in [src/planner.js](src/planner.js), so it can be tested from Node.js and used by the visualization without duplicating A* logic.
 
-## Result screenshots
+## Browser output
 
 ![occupancy-grid-astar-visualizer result screenshot](docs/results/result-screenshot.png)
 
 Browser visualizer state showing grid editing, frontier expansion, and solved path feedback.
 
 
-## What this demonstrates
+## Planner visualization notes
 
 - Interactive A* exploration in a browser with no backend dependency.
 - Planner state visualization for open set, closed set, current node, and final path.
 - A small testable JavaScript codebase with optional ROS 2/Gazebo simulation notes.
 
 
-## Limitations and next steps
+## Integration notes
 
 - The browser visualizer is educational and not a production navigation stack.
 - The optional Gazebo integration depends on a local ROS 2 simulation environment.
