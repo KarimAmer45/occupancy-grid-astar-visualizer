@@ -86,7 +86,7 @@ The browser app is dependency-free by design. The planner core lives in [src/pla
 
 ---
 
-## Benchmarks (Live — May 2026)
+## Benchmarks
 
 All unit tests pass (`npm test`). Throughput measured with 5,000 back-to-back solves on the same grid.
 
